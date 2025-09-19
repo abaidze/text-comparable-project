@@ -1,0 +1,388 @@
+
+:root{
+  --blue-dark: #0a2259;
+  --blue-mid: #17377c;
+  --accent: #2563eb;
+  --bg: #f8fafc;
+  --card: #fff;
+  --muted: #9ca3af;
+  --input-bg: #f1f7fe;
+}
+
+*{box-sizing:border-box}
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR (desktop only) */
+.sidebar {
+  width: 240px;
+  background: var(--blue-dark);
+  color: #fff;
+  height: auto;           
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+  z-index: 50;
+}
+
+.sidebar-top {
+  padding: 12px 0 6px 20px;
+}
+.sidebar-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sidebar-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  background: transparent;
+}
+.sidebar-logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #e5efff;
+}
+
+.sidebar-secondary-brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding-top:10px;
+  padding-left:0;
+}
+.sidebar-secondary-brand img {
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
+.sidebar-secondary-brand .brand-text {
+  color:#dfefff;
+  font-size:0.95rem;
+  font-weight:600;
+}
+
+/* bring nav closer to logo (Figma) */
+.sidebar-nav {
+  margin-top: 8px;
+}
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+}
+.sidebar-nav li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 10px 20px;
+  font-size: 1.02rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: background 0.18s, border-color 0.18s;
+  color: #b6c6e3;
+}
+.sidebar-nav li.active,
+.sidebar-nav li:hover {
+  background: var(--blue-mid);
+  border-left: 4px solid var(--accent);
+  color: #fff;
+}
+.sidebar-nav-text {
+  display: inline;
+}
+
+/* bottom user block — three-dots stay inside blue block */
+.sidebar-user {
+  margin-top: auto;     
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0 18px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 1rem;
+  background: var(--blue-dark);
+}
+.sidebar-user-name {
+  flex: 1;
+  color: #e5efff;
+  font-weight: 500;
+}
+.sidebar-user-menu {
+  font-size: 1.3rem;
+  color: #b6c6e3;
+  margin-left: auto;
+  cursor:pointer;
+  padding: 2px 8px;
+  border-radius:6px;
+  transition:background .12s;
+}
+.sidebar-user-menu:hover { background: rgba(255,255,255,0.03); }
+
+/* TOPBAR (mobile only) */
+.topbar-mobile {
+  display: none;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  padding: 32px 32px 0 32px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  min-height: 60px;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* left group: controls (language + checkbox) and title stacked horizontally */
+.header-left {
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+/* controls placed left (Figma wants language + checkbox on left) */
+.header-controls {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.header-select {
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e6eefb;
+  background: #f5faff;
+}
+.header-checkbox {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.98rem;
+  color: #17377c;
+}
+
+/* Title */
+.header-title-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  color:#17377c;
+  margin-left:6px;
+}
+.header-title-icon { font-size:1.2rem; }
+.header-title { font-size:1.06rem; font-weight:700; }
+.header-title-chevron { color: #17377c; }
+
+/* add button placed to the right side in header (Figma: rounded grey) */
+.header-add-btn {
+  background: #6b7280; /* gray per Figma */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header-add-btn:hover{ background:#565a63; }
+
+/* menu icon (small hamburger) — on bigger screens it is hidden */
+.header-menu-icon {
+  display: none;
+  color: #17377c;
+  position: absolute;
+  right: 16px;
+  top: 18px;
+}
+
+/* COMPARE AREA */
+.compare-area {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.text-columns {
+  display:flex;
+  gap:24px;
+  width:100%;
+  justify-content:center;
+  margin-bottom:24px;
+}
+.text-box {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.arrow-wrapper {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+}
+.arrow {
+  font-size:1.9rem;
+  color: #0f1724; /* black-ish per Figma */
+}
+.text-input {
+  width:100%;
+  min-width:320px;
+  min-height:220px;
+  border-radius:12px;
+  border:1px solid #e6eefb;
+  padding:18px;
+  font-size:1.05rem;
+  background: var(--input-bg);
+  resize: vertical;
+  color: #0b2546;
+}
+.diff-text {
+  background: var(--input-bg);
+  border-radius:12px;
+  padding:18px;
+  min-width:320px;
+  min-height:220px;
+  font-size:1.05rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* diff helper classes */
+.ins { background:#eaffea; color:#0b6b2b; padding:1px 3px; border-radius:3px; }
+.del { background:#ffeaea; color:#a01818; padding:1px 3px; border-radius:3px; text-decoration:line-through; }
+
+/* Compare button — disabled gray, active blue */
+.compare-btn {
+  margin-top: 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.compare-btn:disabled {
+  background: #9ca3af;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVE: MOBILE */
+@media (max-width: 1100px) {
+  .main-content { padding: 16px 8px 0 8px; }
+  .compare-area { padding: 16px; }
+  .text-input, .diff-text { min-width: unset; width:100%; }
+}
+
+@media (max-width: 900px) {
+  /* Hide sidebar, show topbar */
+  .sidebar { display: none !important; }
+  .topbar-mobile {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background: var(--blue-dark);
+    color:#fff;
+    width:100vw;
+    height:60px;
+    padding:0 12px;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:120;
+  }
+  .topbar-logo-row { display:flex; align-items:center; gap:12px; }
+  .topbar-logo-img { width:36px; height:36px; }
+  .topbar-logo-text { font-weight:700; color:#fff; font-size:1rem; }
+
+  .topbar-right { display:flex; align-items:center; gap:8px; }
+
+  .topbar-add { padding:6px 12px; font-size:0.95rem; }
+  .topbar-menu-icon { color:#fff; width:28px; height:28px; }
+
+  .main-content { margin-top:60px; padding:8px 6px 0 6px; }
+
+  .header {
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:12px 10px;
+    min-height:unset;
+  }
+  .header-left { flex-direction:column; align-items:stretch; gap:8px; }
+  .header-select {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    align-self: center; 
+  }
+  .header-add-btn {
+    width: 100%;           
+    max-width: none;
+    box-sizing: border-box;
+    display: flex;         
+    justify-content: center; 
+    align-items: center;     
+    text-align: center; 
+ }   
+  .header-controls {
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 6px;
+  }
+  .header-menu-icon { display:block; position:absolute; right:12px; top:12px; color:#fff; }
+
+  .text-columns { flex-direction:column; gap:12px; align-items:stretch; }
+  .arrow-wrapper { min-width:unset; justify-content:center; margin:8px 0; transform:rotate(90deg); }
+
+  /* hide sidebar-only texts (only inside sidebar), keep topbar text visible */
+  .sidebar .sidebar-logo-text,
+  .sidebar .sidebar-user-name,
+  .sidebar .sidebar-nav-text {
+    display:none;
+  }
+
+  .sidebar-logo-img { margin-left:8px; }
+
+  /* hide three-dots inside sidebar when sidebar hidden */
+  .sidebar .sidebar-user-menu { display:none; }
+}
